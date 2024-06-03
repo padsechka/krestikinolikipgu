@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Установка кодировки документа -->
+        <meta charset="UTF-8">
+        <!-- Установка области просмотра для мобильных устройств -->
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!-- Совместимость с Internet Explorer -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Заголовок страницы -->
+        <title>Крестики-нолики</title>
+        <!-- Подключение внешнего CSS файла для стилизации -->
+        <link rel="stylesheet" href="style.css">
+        <!-- Подключение манифеста -->
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+        <section>
+            <!-- Заголовок игры -->
+            <h1 class="game--title">Крестики-нолики</h1>
+            <!-- Контейнер для игрового поля -->
+            <div class="game--container">
+                <!-- Ячейки игрового поля с индексами для идентификации -->
+                <div data-cell-index="0" class="cell"></div>
+                <div data-cell-index="1" class="cell"></div>
+                <div data-cell-index="2" class="cell"></div>
+                <div data-cell-index="3" class="cell"></div>
+                <div data-cell-index="4" class="cell"></div>
+                <div data-cell-index="5" class="cell"></div>
+                <div data-cell-index="6" class="cell"></div>
+                <div data-cell-index="7" class="cell"></div>
+                <div data-cell-index="8" class="cell"></div>
+            </div>
+            <!-- Элемент для отображения статуса игры -->
+            <h2 class="game--status"></h2>
+            <!-- Кнопка для перезапуска игры -->
+            <button class="game--restart">Рестарт</button>
+        </section>
+        <!-- Подключение внешнего JavaScript файла для логики игры -->
+        <script src="script.js"></script>
+        <!-- Регистрация Service Worker -->
+        <script>
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/serviceworker.js').then((registration) => {
+                console.log('Service Worker зарегистрирован:', registration);
+              }).catch((registrationError) => {
+                console.log('Ошибка регистрации Service Worker:', registrationError);
+              });
+            });
+          }
+        </script>
+    </body>
+</html>
